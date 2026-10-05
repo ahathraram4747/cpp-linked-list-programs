@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+#define MAX 5
+class Garage {
+    int cars[MAX];
+    int top;
+public:
+    Garage() {
+        top = -1;
+    }
+// Park a car
+    void push(int car) {
+        if (top == MAX - 1)
+            cout << "Garage is full\n";
+        else
+            cars[++top] = car;
+    }    // Remove a car
+    void pop() {
+        if (top == -1)
+            cout << "Garage is empty\n";
+        else
+            cout << "Car " << cars[top--] << " removed\n";
+    }
+    // Display cars
+    void display() {
+        for (int i = top; i >= 0; i--)
+            cout << cars[i] << " ";
+        cout << endl;
+    }
+};
+int main() {
+    Garage g;
+    g.push(101);
+    g.push(102);
+    g.push(103);
+    g.push(104);
+    cout << "Cars in garage: ";
+    g.display();
+    g.pop();
+    g.pop();
+cout << "Remaining cars: ";
+    g.display();
+    return 0;
+}
